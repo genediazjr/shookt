@@ -1,0 +1,16 @@
+.shookt-code-6-center {
+  margin: 0 auto;
+}
+.shookt-code-6-box {
+  width: 100%;
+}
+.shookt-code-6 {
+  width: 122px;
+  padding: 5px 11px 0;
+  display: block;
+  letter-spacing: 3px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: 22px;
+  color: #444;
+}

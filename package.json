@@ -1,0 +1,120 @@
+{
+  "name": "shookt",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "source": "src/index.js",
+  "version": "0.2.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "microbundle-crl --no-compress --css-modules false --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --css-modules false --format modern,cjs",
+    "prepare": "run-s build",
+    "test": "run-s test:lint test:unit test:build",
+    "test:build": "run-s build",
+    "test:lint": "semistandard --verbose | snazzy",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom"
+  },
+  "dependencies": {
+    "google-libphonenumber": "3.x",
+    "google-map-react": "2.x",
+    "react-google-recaptcha": "2.x",
+    "react-number-format": "4.x",
+    "react-phone-input-2": "2.x"
+  },
+  "peerDependencies": {
+    "@testing-library/jest-dom": ">=5.x",
+    "@testing-library/react": "12.x",
+    "@testing-library/user-event": ">=13.x",
+    "antd": ">=4.x",
+    "antd-img-crop": ">=3.x",
+    "axios": ">=0.x",
+    "barangay": ">=0.x",
+    "dayjs": ">=1.x",
+    "page": ">=1.x",
+    "qs": ">=6.x",
+    "react": "17.x",
+    "react-color": ">=2.x",
+    "react-dom": "17.x",
+    "react-icons": ">=4.x",
+    "rooks": ">=5.x",
+    "semistandard": ">=16.x",
+    "snazzy": ">=9.x",
+    "stylelint": ">=14.x",
+    "web-vitals": ">=2.x",
+    "ws": ">=8.x"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.x",
+    "@testing-library/react": "12.x",
+    "@testing-library/user-event": "13.x",
+    "antd": "4.x",
+    "antd-img-crop": "4.x",
+    "axios": "0.x",
+    "barangay": "0.x",
+    "cross-env": "7.x",
+    "dayjs": "1.x",
+    "microbundle-crl": "0.x",
+    "npm-run-all": "4.x",
+    "page": "1.x",
+    "qs": "6.x",
+    "react": "17.x",
+    "react-color": "2.x",
+    "react-dom": "17.x",
+    "react-icons": "4.x",
+    "react-scripts": "5.x",
+    "rooks": "5.x",
+    "semistandard": "16.x",
+    "snazzy": "9.x",
+    "stylelint": "14.x",
+    "web-vitals": "2.x",
+    "ws": "8.x"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "react-hooks/exhaustive-deps": "off"
+    },
+    "globals": {
+      "grecaptcha": true,
+      "localStorage": true,
+      "sessionStorage": true,
+      "FileReader": true,
+      "google": true
+    }
+  },
+  "semistandard": {
+    "globals": [
+      "it",
+      "test",
+      "expect",
+      "describe",
+      "grecaptcha",
+      "localStorage",
+      "sessionStorage",
+      "FileReader",
+      "google"
+    ],
+    "ignore": [
+      "build"
+    ]
+  },
+  "keywords": [
+    "react",
+    "dev kit"
+  ],
+  "files": [
+    "dist"
+  ],
+  "repository": "git://github.com/genediazjr/shookt",
+  "description": "A collection of reusable components for building react applications.",
+  "author": "Gene Diaz <genediazjr@gmail.com> (http://genediazjr.com)"
+}
