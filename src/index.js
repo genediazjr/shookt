@@ -12,6 +12,7 @@ export { default as Erratum } from './lib/Erratum';
 export { default as Mobile } from './lib/Mobile';
 export { default as Utils } from './lib/Utils';
 export { NOTFOUNDCODE } from './lib/Router';
+export { TOOMANYCODE } from './lib/Router';
 export { LOGINPATH } from './lib/Router';
 export { USERPATH } from './lib/Router';
 export { intercept } from './lib/Axios';

@@ -4,7 +4,8 @@ import Utils from './Utils';
 import Erratum from './Erratum';
 import React, { createContext, useEffect, useReducer } from 'react';
 axios.defaults.baseURL = process.env.REACT_APP_API_PREFIX;
-const LOGINPATH = process.env.REACT_APP_LOGIN_PATH;
+let TOOMANYCODE = process.env.REACT_APP_TOOMANY_CODE;
+let LOGINPATH = process.env.REACT_APP_LOGIN_PATH;
 
 const states = {
   loading: false,
@@ -62,6 +63,13 @@ const Reducer = (state, action) => {
 };
 
 const Provider = (props = {}) => {
+  if (props.toomany) {
+    TOOMANYCODE = props.toomany;
+  }
+  if (props.loginpath) {
+    LOGINPATH = props.loginpath;
+  }
+  const toomany = JSON.stringify({ code: TOOMANYCODE, query: {}, params: {} });
   const loadPage = page => {
     if (!page.code && !page.path) {
       throw new Error('missing page code or path');
@@ -107,6 +115,8 @@ const Provider = (props = {}) => {
         LOGINPATH && window.location.pathname !== LOGINPATH) {
         page.redirect(LOGINPATH);
         window.location.reload();
+      } else if (res.status === 429) {
+        dispatch({ upsert: { page: TOOMANYCODE, pagecall: toomany } });
       } else if (res.status === 428) {
         dispatch({ upsert: { error: Erratum.captcha } });
       } else if (res.status >= 500) {

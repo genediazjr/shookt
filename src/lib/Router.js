@@ -4,6 +4,7 @@ import page from 'page';
 import qs from 'qs';
 
 export let NOTFOUNDCODE = process.env.REACT_APP_NOTFOUND_CODE;
+export let TOOMANYCODE = process.env.REACT_APP_TOOMANY_CODE;
 export let LOGINPATH = process.env.REACT_APP_LOGIN_PATH;
 export let USERPATH = process.env.REACT_APP_USER_PATH;
 
@@ -14,6 +15,9 @@ const Router = props => {
 
   if (props.notfound) {
     NOTFOUNDCODE = props.notfound;
+  }
+  if (props.toomany) {
+    TOOMANYCODE = props.toomany;
   }
   if (props.loginpath) {
     LOGINPATH = props.loginpath;
