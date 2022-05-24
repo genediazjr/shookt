@@ -217,20 +217,24 @@ Utils.makeOptions = strArray => {
 
 Utils.makeMenu = items => {
   const newMenu = [];
+  const makeItem = i => {
+    let label = i.label;
+    if (i.path) {
+      label = <a href={i.path}>{i.label}</a>;
+    }
+    const props = {
+      key: i.path || i.code || i.label,
+      icon: i.icon,
+      style: i.style,
+      className: i.className
+    };
+    return <Menu.Item {...props}>{label}</Menu.Item>;
+  };
   items.forEach(i => {
     const subMenu = [];
     if (Array.isArray(i.submenu)) {
       i.submenu.forEach(s => {
-        subMenu.push(
-          <Menu.Item
-            key={s.path || s.code || s.label}
-            icon={s.icon}
-            style={s.style}
-            className={s.className}
-          >
-            {s.label}
-          </Menu.Item>
-        );
+        subMenu.push(makeItem(s));
       });
       newMenu.push(
         <Menu.SubMenu
@@ -244,16 +248,7 @@ Utils.makeMenu = items => {
         </Menu.SubMenu>
       );
     } else {
-      newMenu.push(
-        <Menu.Item
-          key={i.path || i.code || i.label}
-          icon={i.icon}
-          style={i.style}
-          className={i.className}
-        >
-          {i.label}
-        </Menu.Item>
-      );
+      newMenu.push(makeItem(i));
     }
   });
   // TODO: reusable onClick handler for both path and code
