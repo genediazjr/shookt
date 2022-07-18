@@ -207,6 +207,35 @@ Utils.mustMatch = (pairName, message) => {
   });
 };
 
+Utils.passwordPolicy = policy => {
+  return () => ({
+    validator (_, value) {
+      const hasUpperCase = /[A-Z]/.test(value);
+      const hasLowerCase = /[a-z]/.test(value);
+      const hasNonalphas = /\W/.test(value);
+      const hasNumbers = /\d/.test(value);
+      if (value) {
+        if (policy.hasUpperCase && !hasUpperCase) {
+          return Promise.reject(new Error('Password must contain at least one uppercase letter'));
+        }
+        if (policy.hasLowerCase && !hasLowerCase) {
+          return Promise.reject(new Error('Password must contain at least one lowercase letter'));
+        }
+        if (policy.hasNonalphas && !hasNonalphas) {
+          return Promise.reject(new Error('Password must contain at least one non-alphanumeric character'));
+        }
+        if (policy.hasNumbers && !hasNumbers) {
+          return Promise.reject(new Error('Password must contain at least one number'));
+        }
+        if (policy.minLength && value.length < policy.minLength) {
+          return Promise.reject(new Error(`Password must be at least ${policy.minLength} characters long`));
+        }
+      }
+      return Promise.resolve();
+    }
+  });
+};
+
 Utils.makeOptions = strArray => {
   const options = [];
   strArray.forEach(txt => {
