@@ -18,11 +18,11 @@
   "dependencies": {
     "@testing-library/jest-dom": "5.x",
     "@testing-library/react": "12.x",
-    "@testing-library/user-event": "13.x",
+    "@testing-library/user-event": "14.x",
     "antd": "4.x",
     "antd-img-crop": "4.x",
     "antd-password-input-strength": "2.x",
-    "axios": "0.x",
+    "axios": "1.x",
     "barangay": "0.x",
     "dayjs": "1.x",
     "google-libphonenumber": "3.x",
@@ -34,10 +34,10 @@
     "react-dom": "17.x",
     "react-google-recaptcha": "2.x",
     "react-icons": "4.x",
-    "react-number-format": "4.x",
+    "react-number-format": "5.x",
     "react-phone-input-2": "2.x",
-    "rooks": "5.x",
-    "web-vitals": "2.x",
+    "rooks": "7.x",
+    "web-vitals": "3.x",
     "ws": "8.x"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
   },
   "jest": {
     "transformIgnorePatterns": [
-      "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
+      "/node_modules/(?!axios|antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
     ]
   },
   "eslintConfig": {
