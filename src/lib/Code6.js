@@ -1,11 +1,11 @@
 import React from 'react';
-import NumberFormat from 'react-number-format';
+import { NumericFormat } from 'react-number-format';
 import './Code6.css';
 
 const Code6 = props => {
   return (
     <div className='shookt-code-6-box'>
-      <NumberFormat {...{
+      <NumericFormat {...{
         ...{
           mask: '-',
           format: '######',
