@@ -26,43 +26,45 @@ const Router = props => {
     USERPATH = props.userpath;
   }
 
-  useEffect(async () => {
-    props.authenticate &&
-      await props.authenticate(dispatch);
+  useEffect(() => {
+    (async () => {
+      props.authenticate &&
+        await props.authenticate(dispatch);
 
-    state.routes.forEach(route => {
-      if (route.path) {
-        page(route.path, ctx => {
-          if (props.onRoute &&
-            props.onRoute({ state, dispatch, route, ctx })) {
-            return;
-          }
+      state.routes.forEach(route => {
+        if (route.path) {
+          page(route.path, ctx => {
+            if (props.onRoute &&
+              props.onRoute({ state, dispatch, route, ctx })) {
+              return;
+            }
 
-          const query = JSON.stringify(qs.parse(ctx.querystring));
-          const params = JSON.stringify(ctx.params);
-          const pagecall = JSON.stringify({ code: route.path, query, params });
-          dispatch({ upsert: { query, params, pagecall, page: route.path } });
+            const query = JSON.stringify(qs.parse(ctx.querystring));
+            const params = JSON.stringify(ctx.params);
+            const pagecall = JSON.stringify({ code: route.path, query, params });
+            dispatch({ upsert: { query, params, pagecall, page: route.path } });
+          });
+        }
+
+        handlers[route.path || route.code] = route.handler;
+      });
+
+      if (NOTFOUNDCODE) {
+        page('*', () => {
+          dispatch({
+            upsert: {
+              page: NOTFOUNDCODE,
+              pagecall: JSON.stringify({
+                code: NOTFOUNDCODE,
+                query: {},
+                params: {}
+              })
+            }
+          });
         });
       }
-
-      handlers[route.path || route.code] = route.handler;
-    });
-
-    if (NOTFOUNDCODE) {
-      page('*', () => {
-        dispatch({
-          upsert: {
-            page: NOTFOUNDCODE,
-            pagecall: JSON.stringify({
-              code: NOTFOUNDCODE,
-              query: {},
-              params: {}
-            })
-          }
-        });
-      });
-    }
-    page();
+      page();
+    })();
   }, []);
 
   useEffect(() => {
