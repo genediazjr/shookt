@@ -16,6 +16,7 @@
     "test:watch": "react-scripts test --env=jsdom"
   },
   "dependencies": {
+    "@craco/craco": "6.x",
     "@testing-library/jest-dom": "5.x",
     "@testing-library/react": "13.x",
     "@testing-library/user-event": "14.x",
@@ -24,6 +25,7 @@
     "antd-password-input-strength": "2.x",
     "axios": "1.x",
     "barangay": "0.x",
+    "craco-less": "1.x",
     "dayjs": "1.x",
     "google-libphonenumber": "3.x",
     "google-map-react": "2.x",
@@ -36,7 +38,10 @@
     "react-icons": "4.x",
     "react-number-format": "5.x",
     "react-phone-input-2": "2.x",
+    "react-scripts": "5.x",
     "rooks": "7.x",
+    "semistandard": "16.x",
+    "snazzy": "9.x",
     "web-vitals": "3.x",
     "ws": "8.x"
   },
@@ -44,9 +49,6 @@
     "cross-env": "7.x",
     "microbundle-crl": "0.x",
     "npm-run-all": "4.x",
-    "react-scripts": "5.x",
-    "semistandard": "16.x",
-    "snazzy": "9.x",
     "stylelint": "14.x"
   },
   "jest": {
