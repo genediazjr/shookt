@@ -8,7 +8,7 @@ const Erratum = ({ className, noPad, style = {} }) => {
   if (state.error || state.good) {
     error = (
       <div style={style}>
-        <Alert className={className} message={state.error || state.good} type={state.good ? 'success' : 'error'} />
+        <Alert className={className} message={state.error || state.good} type={state.error ? 'error' : 'success'} />
         {noPad ? null : <br />}
       </div>
     );
