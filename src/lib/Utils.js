@@ -23,7 +23,7 @@ Utils.sleep = ms => {
 };
 
 Utils.clearError = dispatch => () => {
-  dispatch({ delete: ['error'] });
+  dispatch({ delete: ['error', 'good'] });
 };
 
 Utils.checkBox = (_, value) => value
