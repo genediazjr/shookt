@@ -1,8 +1,17 @@
 import { Context } from './Provider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { Grid } from 'antd';
 
 const Projector = () => {
-  const [state] = useContext(Context);
+  const [state, dispatch] = useContext(Context);
+  const screens = Grid.useBreakpoint();
+
+  useEffect(() => {
+    if (Object.keys(screens).length) {
+      dispatch({ upsert: { screens } });
+    }
+  }, [screens]);
+
   return state.content;
 };
 
