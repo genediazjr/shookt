@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'
 import { useMutationObserver } from 'rooks';
 import { Button, Typography } from 'antd';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -117,7 +117,7 @@ const GoogleMap = ({
 
   const onLoad = ({ map }) => {
     const controlButtonDiv = document.createElement('div');
-    ReactDOM.render(<FullScreen />, controlButtonDiv);
+    createRoot(controlButtonDiv).render(<FullScreen />);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(controlButtonDiv);
     setMap(map);
   };
