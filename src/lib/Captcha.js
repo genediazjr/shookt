@@ -36,8 +36,9 @@ const Captcha = props => {
   return (
     <ReCAPTCHA
       sitekey={siteKey}
-      className={props.className || 'shookt-captcha'}
       onChange={setCaptcha}
+      className={props.className || 'shookt-captcha'}
+      style={props.style}
     />
   );
 };
