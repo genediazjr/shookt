@@ -10,6 +10,7 @@ let LOGINPATH = process.env.REACT_APP_LOGIN_PATH;
 const states = {
   loading: false,
   content: '',
+  screens: {},
   routes: [],
   params: '',
   query: '',
