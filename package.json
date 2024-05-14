@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@craco/craco": "6.x",
-    "@testing-library/jest-dom": "5.x",
+    "@testing-library/jest-dom": "6.0.0",
     "@testing-library/react": "14.x",
     "@testing-library/user-event": "14.x",
     "antd": "4.x",
@@ -38,7 +38,7 @@
     "react-icons": "4.x",
     "react-number-format": "5.x",
     "react-phone-input-2": "2.x",
-    "react-scripts": "4.x",
+    "react-scripts": "5.0.0",
     "rooks": "7.x",
     "semistandard": "16.x",
     "snazzy": "9.x",
